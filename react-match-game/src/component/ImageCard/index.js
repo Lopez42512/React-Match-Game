@@ -1,16 +1,16 @@
 import React from "react";
-import Wrapper from "../Wrapper";
+// import Wrapper from "../Wrapper";
 
 function ImageCard(props) {
     
   return (
-    <Wrapper>
+    // <Wrapper>
       <div className="image">
         <button >
-          <img  alt={props.name} src={props.url} />
+          <img  alt={props.name} src={props.url} onChange={props.picked}/>
         </button>
       </div>
-    </Wrapper>
+    // </Wrapper>
   );
 }
 

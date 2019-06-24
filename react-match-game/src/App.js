@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import image from "./image.json";
 import ImageCard from "./component/ImageCard/";
 import Header from "./component/Header";
+import Wrapper from "./component/Wrapper/index.js";
 
 function shuffleArray(array) {
   let i = array.length - 1;
@@ -21,7 +22,7 @@ class App extends Component {
   state = {
     score: 0,
     topScore: 0,
-    image: image
+    clicked: [9]
   };
 
   // handleIncrement increases this.state.count by 1
@@ -35,16 +36,18 @@ class App extends Component {
     }
   };
 
-  picked = event => {
-    const { name, value } = event.target;
-
-    console.log(name, value)
+  picked = imgId => {
+    let clickedImage = this.state.clicked;
+    console.log(clickedImage)
+    console.log(imgId)
+    // clickedImage.push(this.image.id);
+    console.log(this.state.clicked)
   };
 
   allFunctions = () => {
     this.handleIncrement();
     const shuffleImage = shuffleArray(image);
-    // this.picked()
+    // this.picked();
   };
 
   render() {
@@ -52,11 +55,13 @@ class App extends Component {
       <div>
         <Header Score={this.state.score} topScore={this.state.topScore} />
 
-        <div onClick={this.allFunctions} >
-          {shuffleImage.map(image => (
-            <ImageCard onClick={this.allFunctions} name={this.state.image.id} value={console.log("hello")} key={image.id} url={image.url} onChange={this.picked} />
-          ))}
-        </div>
+        <Wrapper>
+          <div onClick={this.allFunctions}>
+            {shuffleImage.map(image => (
+              <ImageCard key={image.id} url={image.url} onClick={() => this.picked()} />
+            ))}
+          </div>
+        </Wrapper>
       </div>
     );
   }
@@ -87,3 +92,91 @@ export default App;
 //       </div>
 //     );
 //   }
+
+{
+  /* <button onClick={this.allFunctions}>
+          <ImageCard
+            name={this.state.image[0].id}
+            url={this.state.image[0].url}
+            onChange={this.picked}
+          />
+        </button>
+        <button onClick={this.allFunctions}>
+          <ImageCard
+            name={this.state.image[1].id}
+            url={this.state.image[1].url}
+            onChange={this.picked}
+          />
+        </button>
+        <button onClick={this.allFunctions}>
+          <ImageCard
+            name={this.state.image[2].id}
+            url={this.state.image[2].url}
+            picked={this.state.image[2].picked}
+            onChange={this.picked}
+          />
+        </button>
+        <button onClick={this.allFunctions}>
+          <ImageCard
+            name={this.state.image[4].id}
+            url={this.state.image[4].url}
+            onChange={this.picked}
+          />
+        </button>
+        <button onClick={this.allFunctions}>
+          <ImageCard
+            name={this.state.image[5].id}
+            url={this.state.image[5].url}
+            onChange={this.picked}
+          />
+        </button>
+        <button onClick={this.allFunctions}>
+          <ImageCard
+            name={this.state.image[6].id}
+            url={this.state.image[6].url}
+            onChange={this.picked}
+          />
+        </button>
+        <button onClick={this.allFunctions}>
+          <ImageCard
+            name={this.state.image[7].id}
+            url={this.state.image[7].url}
+            onChange={this.picked}
+          />
+        </button>
+        <button onClick={this.allFunctions}>
+          <ImageCard
+            name={this.state.image[8].id}
+            url={this.state.image[8].url}
+            onChange={this.picked}
+          />
+        </button>
+        <button onClick={this.allFunctions}>
+          <ImageCard
+            name={this.state.image[9].id}
+            url={this.state.image[9].url}
+            onChange={this.picked}
+          />
+        </button>
+        <button onClick={this.allFunctions}>
+          <ImageCard
+            name={this.state.image[10].id}
+            url={this.state.image[10].url}
+            onChange={this.picked}
+          />
+        </button>
+        <button onClick={this.allFunctions}>
+          <ImageCard
+            name={this.state.image[11].id}
+            url={this.state.image[11].url}
+            onChange={this.picked}
+          />
+        </button>
+        <button onClick={this.allFunctions}>
+          <ImageCard
+            name={this.state.image[3].id}
+            url={this.state.image[3].url}
+            onChange={this.picked}
+          />
+        </button> */
+}
